@@ -8,3 +8,5 @@
      date DATE,
      PRIMARY KEY (user_id, date)
  );
+
+SELECT * FROM users_growth_accounting;

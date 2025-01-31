@@ -1,0 +1,37 @@
+Purpose: This document explains how to test the Flink job and the SQL script with proper Kafka and PostgreSQL setups.
+
+Testing Instructions for the Flink Job:
+
+1. Setup Kafka:
+Ensure Kafka is running and the appropriate topic (KAFKA_TOPIC) is set up to receive web traffic data.
+You can set up a Kafka broker locally or use a cloud-based solution. Ensure Kafka is accessible via the URL set in the environment variable KAFKA_URL.
+
+2. Setup PostgreSQL:
+PostgreSQL should be running and accessible via the URL provided in the POSTGRES_URL environment variable.
+Ensure that the PostgreSQL database has a table named processed_events_aggregated. If it doesn't, the Flink job will create it automatically.
+Set the POSTGRES_USER and POSTGRES_PASSWORD environment variables for authentication.
+
+3. Environment Variables:
+Make sure the following environment variables are set:
+KAFKA_URL: The Kafka broker URL (e.g., localhost:9092).
+KAFKA_TOPIC: The Kafka topic to consume events from.
+POSTGRES_URL: The PostgreSQL URL.
+POSTGRES_USER: The PostgreSQL username.
+POSTGRES_PASSWORD: The PostgreSQL password.
+KAFKA_WEB_TRAFFIC_KEY: The Kafka consumer key.
+KAFKA_WEB_TRAFFIC_SECRET: The Kafka consumer secret.
+
+
+4. Running the Flink Job:
+Execute the Flink job using the following command:
+python flink-homework.py
+
+5. Testing Data Ingestion:
+The Flink job should consume data from the Kafka topic and sessionize it. Verify that the data is being inserted into the PostgreSQL table processed_events_aggregated.
+
+6. Verifying Sessionization:
+Check the session data in PostgreSQL:
+Verify the columns session_start, session_end, ip, host, and num_events contain correct and aggregated session data.
+
+7. Unit Tests (Optional):
+Use the provided unit tests to verify the correctness of each function in the Flink job. These tests ensure that the Kafka source table and PostgreSQL sink table are correctly created and that data flows through the system correctly.

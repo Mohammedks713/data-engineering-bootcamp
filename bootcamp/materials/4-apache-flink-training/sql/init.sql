@@ -7,3 +7,9 @@ CREATE TABLE IF NOT EXISTS processed_events (
     url VARCHAR,
     geodata VARCHAR
 );
+
+
+SELECT geodata::json->>'country', COUNT(*) FROM processed_events
+GROUP BY 1
+ORDER BY 2 DESC;
+

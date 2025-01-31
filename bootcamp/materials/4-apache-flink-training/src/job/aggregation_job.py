@@ -129,3 +129,33 @@ def log_aggregation():
 
 if __name__ == '__main__':
     log_aggregation()
+
+
+# delete after:
+# avg_events_result = avg_events_query.execute().print()
+# print("Average number of web events per session for Tech Creator:", avg_events_result)
+
+# host_comparison_result = host_comparison_query.execute().print()
+# print("Comparison of average events per session by host:", host_comparison_result)
+
+# Query 1: Average number of events per session for Tech Creator
+#         avg_events_query = sessionized_table \
+#             .filter(col("host").like("%techcreator.io")) \
+#             .group_by(col("host")) \
+#             .select(
+#             col("host"),
+#             col("num_events").avg.alias("avg_events_per_session")
+#         )
+#
+#         avg_events_query.execute().print()
+#
+#
+#         # Query 2: Compare results between different hosts dynamically
+#         host_comparison_query = sessionized_table \
+#             .group_by(col("host")) \
+#             .select(
+#             col("host"),
+#             col("num_events").avg.alias("avg_events_per_host")
+#         )
+#
+#         host_comparison_query.execute().print()

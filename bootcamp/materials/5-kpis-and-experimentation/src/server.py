@@ -4,6 +4,9 @@ from statsig.statsig_event import StatsigEvent
 from statsig.statsig_user import StatsigUser
 import random
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 API_KEY = os.environ.get('STATSIG_API_KEY')
 statsig.initialize(API_KEY)

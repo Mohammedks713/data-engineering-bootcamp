@@ -4,7 +4,7 @@ CREATE TYPE scd_type AS (
                     is_active boolean,
                     start_season INTEGER,
                     end_season INTEGER
-                        )
+                        );
 
 
 WITH last_season_scd AS (
